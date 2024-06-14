@@ -1,0 +1,18 @@
+<div
+  class="fixed bottom-4 right-4 text-white rounded shadow-lg transition-transform duration-300 ease-in-out"
+  [ngClass]="{
+    'bg-TF-primary': type === 'info',
+    'bg-green-900/40 border-green-700': type === 'success',
+    'bg-red-900/40 border-red-700': type === 'error',
+    'bg-yellow-900/40 border-yellow-700': type === 'warning'
+  }"
+  [@toastAnimation]="show ? 'show' : 'hide'"
+>
+  <div
+    class="w-full h-full flex items-center gap-2 px-4 py-2 rounded"
+    [ngClass]="borderClass"
+  >
+    <lucide-angular [size]="18" [name]="iconName"></lucide-angular>
+    <h1 class="text-sm font-bold">{{ message }}</h1>
+  </div>
+</div>

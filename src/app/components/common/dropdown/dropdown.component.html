@@ -1,0 +1,10 @@
+<div class="relative group inline-block">
+  <div class="cursor-pointer">
+    <ng-content select="[dropdown-title]"></ng-content>
+  </div>
+  <div
+    class="absolute right-0 mt-6 w-fit min-w-24 text-xs font-bold bg-TF-primary border border-gray-600 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-in-out z-10 transform -translate-y-2 overflow-hidden"
+  >
+    <ng-content select="[dropdown-content]"></ng-content>
+  </div>
+</div>

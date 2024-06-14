@@ -1,0 +1,70 @@
+<div class="max-w-full overflow-x-auto">
+  <div class="w-full h-full min-w-96 flex flex-col gap-4 items-end">
+    <div class="w-full overflow-x-auto">
+      <table class="w-full text-sm text-left rtl:text-right">
+        <thead class="text-xs uppercase bg-gray-800">
+          <tr>
+            <ng-container *ngFor="let header of headers">
+              <th
+                scope="col"
+                class="px-2 sm:px-4 py-1 text-TF-text cursor-default"
+              >
+                <div class="flex justify-center items-center">
+                  <h1 class="text-xs">{{ formatHeader(header) }}</h1>
+                </div>
+              </th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="data">
+            <tr
+              *ngFor="let row of displayedData; let rowIndex = index"
+              class="border-b border-b-gray-600 bg-TF-primary text-TF-textSecondary hover:text-TF-text hover:bg-gray-800 duration-300 cursor-default"
+            >
+              <ng-container
+                *ngFor="let header of headers; let columnIndex = index"
+              >
+                <td class="px-2 sm:px-4 py-1">
+                  <div class="flex justify-center items-center">
+                    <h1 class="text-sm">{{ row[header.toLowerCase()] }}</h1>
+                  </div>
+                </td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex justify-center items-center gap-2">
+      <div>
+        <!-- Set Page size -->
+        <select
+          class="border rounded-md px-2 bg-gray-800 text-TF-text outline-none border-none cursor-pointer text-xs font-bold"
+          [(ngModel)]="pageSize"
+          (change)="changePageSize($event)"
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <lucide-icon
+        name="chevron-left"
+        class="cursor-pointer hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300 rounded-md"
+        [size]="20"
+        (click)="goToPage(currentPage - 1)"
+      >
+      </lucide-icon>
+      <h1 class="text-xs font-bold">{{ currentPage }} / {{ totalPages }}</h1>
+      <lucide-icon
+        name="chevron-right"
+        class="cursor-pointer hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300 rounded-md"
+        [size]="20"
+        (click)="goToPage(currentPage + 1)"
+      >
+      </lucide-icon>
+    </div>
+  </div>
+</div>

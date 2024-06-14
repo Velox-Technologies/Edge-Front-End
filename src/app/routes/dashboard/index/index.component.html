@@ -1,0 +1,77 @@
+<DashboardLayout>
+  <div class="w-full flex flex-col gap-5 p-4">
+    <!-- Accordion -->
+    <div class="w-full md:w-96">
+      <Accordion>
+        <ng-template #accordionTitle>
+          <h1 class="text-base font-medium">Accordion Title</h1>
+        </ng-template>
+        <div class="w-full p-2">
+          <p class="text-sm">
+            This is the content of the first accordion item.
+          </p>
+        </div>
+      </Accordion>
+    </div>
+
+    <!-- Modal -->
+    <button
+      class="w-fit border rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300"
+      (click)="openModal()"
+    >
+      <h1 class="text-xs font-bold">Open Modal</h1>
+    </button>
+    <Modal [contentTemplate]="modalContent" #modal>
+      <ng-template #modalContent>
+        <h2 class="text-xl font-bold mb-4">Modal Content</h2>
+        <p>
+          This is the content of the modal. You can put any HTML content here.
+        </p>
+      </ng-template>
+    </Modal>
+
+    <!-- Drawer -->
+
+    <button
+      class="w-fit border rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300"
+      (click)="openDrawer()"
+    >
+      <h1 class="text-xs font-bold">Open Drawer</h1>
+    </button>
+    <Drawer
+      [contentTemplate]="drawerContent"
+      position="left"
+      #drawer
+      [titleTemplate]="drawerTitle"
+    >
+      <ng-template #drawerTitle>
+        <h2 class="text-xl font-bold mb-4">Drawer Title</h2>
+      </ng-template>
+      <ng-template #drawerContent>
+        <h2 class="text-xl font-bold mb-4">Drawer Content</h2>
+        <p>
+          This is the content of the drawer. You can put any HTML content here.
+        </p>
+      </ng-template>
+    </Drawer>
+
+    <!-- Card -->
+    <Card>
+      <div card-title>
+        <h1 class="font-bold">Title</h1>
+      </div>
+      <div card-description>
+        <div card-title>
+          <h1 class="text-sm text-TF-textSecondary font-bold">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </h1>
+        </div>
+      </div>
+    </Card>
+
+    <!-- Data Table -->
+    <div class="w-full overflow-x-auto">
+      <Data-Table [headers]="headers" [data]="data"></Data-Table>
+    </div>
+  </div>
+</DashboardLayout>

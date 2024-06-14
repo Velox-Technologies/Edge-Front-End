@@ -1,0 +1,226 @@
+<div class="w-full flex h-screen">
+  <!-- Sidebar -->
+  <div
+    class="w-64 bg-TF-primary border-r border-r-gray-600 text-white fixed h-full hidden md:block"
+  >
+    <div class="w-full h-full flex flex-col justify-between p-4">
+      <div class="w-full h-full flex flex-col gap-4">
+        <div class="container text-3xl">
+          <p class="glitch">
+            <span aria-hidden="true">Edge</span>
+            Edge
+            <span aria-hidden="true">Edge</span>
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="w-full flex justify-start items-center">
+            <h1 class="font-bold text-2xl">Business Name</h1>
+          </div>
+          <ul>
+            <li class="w-full hover:bg-gray-800 duration-300 cursor-pointer">
+              <a
+                class="flex items-center gap-2 font-medium rounded-md p-2"
+                href="/dashboard"
+              >
+                <lucide-icon size="16" name="bar-chart-3"></lucide-icon>
+                <span class="text-sm font-bold">Analytics</span>
+              </a>
+            </li>
+            <li class="w-full hover:bg-gray-800 duration-300 cursor-pointer">
+              <a
+                class="flex items-center gap-2 font-medium rounded-md p-2"
+                href="/dashboard/orders"
+              >
+                <lucide-icon size="16" name="shopping-cart"></lucide-icon>
+                <span class="text-sm font-bold">Orders</span>
+              </a>
+            </li>
+            <li class="w-full hover:bg-gray-800 duration-300 cursor-pointer">
+              <a
+                class="flex items-center gap-2 font-medium rounded-md p-2"
+                href="/dashboard/investments"
+              >
+                <lucide-icon size="16" name="area-chart"></lucide-icon>
+                <span class="text-sm font-bold">Investments</span>
+              </a>
+            </li>
+            <li class="w-full hover:bg-gray-800 duration-300 cursor-pointer">
+              <a
+                class="flex items-center gap-2 font-medium rounded-md p-2"
+                href="/dashboard/returns"
+              >
+                <lucide-icon size="16" name="hand-coins"></lucide-icon>
+                <span class="text-sm font-bold">Returns</span>
+              </a>
+            </li>
+            <li class="w-full hover:bg-gray-800 duration-300 cursor-pointer">
+              <a
+                class="flex items-center gap-2 font-medium rounded-md p-2"
+                href="/dashboard/settings"
+              >
+                <lucide-icon size="16" name="settings"></lucide-icon>
+                <span class="text-sm font-bold">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <Card>
+          <div class="w-full" card-title>
+            <Accordion>
+              <ng-template #accordionTitle>
+                <div class="w-full flex items-center gap-2">
+                  <lucide-icon name="circle-user-round"></lucide-icon>
+                  <h1 class="font-bold">{{ user.displayName }}</h1>
+                </div>
+              </ng-template>
+              <div class="w-full p-2">
+                <div
+                  class="w-full flex items-center gap-2 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+                >
+                  <lucide-icon size="16" name="settings"></lucide-icon>
+                  <h1>Settings</h1>
+                </div>
+                <div
+                  class="w-full flex items-center gap-2 text-red-500 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+                  (click)="signOut()"
+                >
+                  <lucide-icon size="16" name="log-out"></lucide-icon>
+                  <h1>Sign Out</h1>
+                </div>
+              </div>
+            </Accordion>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="flex-1 flex flex-col md:ml-64">
+    <!-- Navbar -->
+    <div
+      class="bg-TF-primary border-b border-b-gray-600 text-white p-4 fixed w-full z-10 flex justify-between items-center"
+    >
+      <h1 class="text-xl font-bold">{{ currentSectionTitle }}</h1>
+      <lucide-icon name="menu" (click)="openDrawer()"> </lucide-icon>
+    </div>
+    <!-- Sidebar for small screens -->
+    <Drawer
+      [contentTemplate]="drawerContent"
+      position="left"
+      #drawer
+      [titleTemplate]="drawerTitle"
+    >
+      <ng-template #drawerTitle>
+        <div class="container text-3xl">
+          <p class="glitch">
+            <span aria-hidden="true">Edge</span>
+            Edge
+            <span aria-hidden="true">Edge</span>
+          </p>
+        </div>
+      </ng-template>
+      <ng-template #drawerContent>
+        <div class="w-full h-full flex flex-col justify-between mt-6">
+          <div class="flex flex-col gap-3">
+            <div class="w-full flex justify-start items-centera">
+              <h1 class="font-bold text-2xl">Business Name</h1>
+            </div>
+            <div class="w-full h-full flex flex-col gap-4">
+              <ul>
+                <li
+                  class="w-full hover:bg-gray-800 duration-300 cursor-pointer"
+                >
+                  <a
+                    class="flex items-center gap-2 font-medium rounded-md p-2"
+                    href="/dashboard"
+                  >
+                    <lucide-icon size="16" name="bar-chart-3"></lucide-icon>
+                    <span class="text-sm font-bold">Analytics</span>
+                  </a>
+                </li>
+                <li
+                  class="w-full hover:bg-gray-800 duration-300 cursor-pointer"
+                >
+                  <a
+                    class="flex items-center gap-2 font-medium rounded-md p-2"
+                    href="/dashboard/orders"
+                  >
+                    <lucide-icon size="16" name="shopping-cart"></lucide-icon>
+                    <span class="text-sm font-bold">Orders</span>
+                  </a>
+                </li>
+                <li
+                  class="w-full hover:bg-gray-800 duration-300 cursor-pointer"
+                >
+                  <a
+                    class="flex items-center gap-2 font-medium rounded-md p-2"
+                    href="/dashboard/investments"
+                  >
+                    <lucide-icon size="16" name="area-chart"></lucide-icon>
+                    <span class="text-sm font-bold">Investments</span>
+                  </a>
+                </li>
+                <li
+                  class="w-full hover:bg-gray-800 duration-300 cursor-pointer"
+                >
+                  <a
+                    class="flex items-center gap-2 font-medium rounded-md p-2"
+                    href="/dashboard/returns"
+                  >
+                    <lucide-icon size="16" name="hand-coins"></lucide-icon>
+                    <span class="text-sm font-bold">Returns</span>
+                  </a>
+                </li>
+                <li
+                  class="w-full hover:bg-gray-800 duration-300 cursor-pointer"
+                >
+                  <a
+                    class="flex items-center gap-2 font-medium rounded-md p-2"
+                    href="/dashboard/settings"
+                  >
+                    <lucide-icon size="16" name="settings"></lucide-icon>
+                    <span class="text-sm font-bold">Settings</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <Card class="mb-14">
+            <div class="w-full" card-title>
+              <Accordion>
+                <ng-template #accordionTitle>
+                  <div class="w-full flex items-center gap-2">
+                    <lucide-icon name="circle-user-round"></lucide-icon>
+                    <h1 class="font-bold">{{ user.displayName }}</h1>
+                  </div>
+                </ng-template>
+                <div class="w-full p-2">
+                  <div
+                    class="w-full flex items-center gap-2 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+                  >
+                    <lucide-icon size="16" name="settings"></lucide-icon>
+                    <h1>Settings</h1>
+                  </div>
+                  <div
+                    class="w-full flex items-center gap-2 text-red-500 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+                    (click)="signOut()"
+                  >
+                    <lucide-icon size="16" name="log-out"></lucide-icon>
+                    <h1>Sign Out</h1>
+                  </div>
+                </div>
+              </Accordion>
+            </div>
+          </Card>
+        </div>
+      </ng-template>
+    </Drawer>
+    <!-- Content -->
+    <div class="flex-1 overflow-y-auto mt-16">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

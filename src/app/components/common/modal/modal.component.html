@@ -1,0 +1,13 @@
+<!-- modal.component.html -->
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  *ngIf="isOpen"
+  (click)="closeModal()"
+>
+  <div
+    class="bg-TF-primary rounded-lg p-6 max-w-md w-full mx-4 overflow-y-auto"
+    (click)="$event.stopPropagation()"
+  >
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+</div>

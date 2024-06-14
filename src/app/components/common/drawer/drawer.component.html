@@ -1,0 +1,23 @@
+<div
+  [ngClass]="{ 'left-0': position === 'left', 'right-0': position === 'right' }"
+  class="h-screen fixed inset-y-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  *ngIf="isOpen"
+  (click)="closeDrawer()"
+>
+  <div
+    class="bg-TF-primary p-6 max-w-xs w-full h-full"
+    (click)="$event.stopPropagation()"
+    [ngClass]="{
+      'border-r border-r-gray-600': position === 'left',
+      'border-l border-l-gray-600': position === 'right'
+    }"
+  >
+    <div class="w-full flex justify-between items-start">
+      <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+      <button class="text-gray-600" (click)="closeDrawer()">
+        <lucide-icon name="x" size="20"></lucide-icon>
+      </button>
+    </div>
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+</div>
