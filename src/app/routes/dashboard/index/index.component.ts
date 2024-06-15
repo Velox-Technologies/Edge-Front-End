@@ -20,11 +20,18 @@ export class IndexComponent implements OnInit {
   forms: FormGroup[] = [];
   canProceed: boolean[] = [false, false, true];
   chartData = [
-    { x: 'Label 1', y: 1 },
-    { x: 'Label 2', y: 2 },
-    { x: 'Label 3', y: 1 },
-    { x: 'Label 4', y: 25 },
-    // Add more data points as needed
+    { x: 'January', y: 200 },
+    { x: 'February', y: 350 },
+    { x: 'March', y: 280 },
+    { x: 'April', y: 450 },
+    { x: 'May', y: 320 },
+    { x: 'June', y: 400 },
+    { x: 'July', y: 300 },
+    { x: 'August', y: 380 },
+    { x: 'September', y: 420 },
+    { x: 'October', y: 370 },
+    { x: 'November', y: 280 },
+    { x: 'December', y: 350 },
   ];
 
   constructor(private titleService: Title, private fb: FormBuilder) {

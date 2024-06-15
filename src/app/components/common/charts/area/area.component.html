@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative" (window:resize)="onResize($event)">
   <svg
     #chartSvg
     class="block mx-auto"
@@ -45,7 +45,7 @@
         'rotate(-90 ' + margin / 2 + ' ' + chartHeight / 2 + ')'
       "
       [attr.x]="margin / 2"
-      [attr.y]="chartHeight - 135"
+      [attr.y]="chartHeight / 1.9"
       style="text-anchor: middle; font-weight: bold; fill: gray"
     >
       {{ yAxisLabel }}
@@ -53,7 +53,7 @@
 
     <!-- Area Path with Gradient -->
     <path
-      class="fill-current text-gray-800"
+      class="fill-current text-gray-800/40"
       [attr.d]="generatePath(data)"
       [attr.transform]="'translate(' + margin + ',0)'"
       fill="url(#areaGradient)"
@@ -77,7 +77,7 @@
             margin -
             (point.y * (chartHeight - 2 * margin)) / maxDataValue
           "
-          stroke="gray"
+          stroke="white"
           stroke-width="2"
         ></line>
 
@@ -90,7 +90,7 @@
             (point.y * (chartHeight - 2 * margin)) / maxDataValue
           "
           r="5"
-          fill="gray"
+          fill="white"
           style="cursor: pointer"
           (mouseenter)="showTooltip($event, point)"
           (mouseleave)="hideTooltip()"

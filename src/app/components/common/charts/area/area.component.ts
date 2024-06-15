@@ -1,11 +1,17 @@
-import { Component, Input, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 
 @Component({
   selector: 'AreaChart',
   templateUrl: './area.component.html',
   styleUrls: ['./area.component.css'],
 })
-export class AreaComponent {
+export class AreaComponent implements AfterViewInit {
   @Input() data: { x: string; y: number }[] = [];
   @Input() xAxisLabel: string = '';
   @Input() yAxisLabel: string = '';
@@ -22,10 +28,24 @@ export class AreaComponent {
   tooltipX: number = 0;
   tooltipY: number = 0;
 
-  constructor() {}
+  constructor(private elementRef: ElementRef) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.calculateChartDimensions();
     this.maxDataValue = Math.max(...this.data.map((point) => point.y));
+  }
+
+  onResize(event: Event): void {
+    this.calculateChartDimensions();
+  }
+
+  calculateChartDimensions(): void {
+    const element = this.elementRef.nativeElement.querySelector('.relative');
+    const width = element.offsetWidth;
+    const height = 0.6 * width; // Adjust height as needed based on aspect ratio
+
+    this.chartWidth = width;
+    this.chartHeight = height;
   }
 
   generatePath(data: { x: string; y: number }[]): string {
