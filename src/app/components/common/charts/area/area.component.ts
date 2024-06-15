@@ -42,7 +42,7 @@ export class AreaComponent implements AfterViewInit {
   calculateChartDimensions(): void {
     const element = this.elementRef.nativeElement.querySelector('.relative');
     const width = element.offsetWidth;
-    const height = 0.6 * width; // Adjust height as needed based on aspect ratio
+    const height = 0.4 * width; // Adjust height as needed based on aspect ratio
 
     this.chartWidth = width;
     this.chartHeight = height;
