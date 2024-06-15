@@ -1,6 +1,7 @@
 <DashboardLayout>
-  <div class="w-full flex flex-col gap-5 p-4">
+  <div class="w-full min-h-screen flex flex-col gap-5 p-4">
     <!-- Accordion -->
+    <h1 class="font-bold">Accordion</h1>
     <div class="w-full md:w-96">
       <Accordion>
         <ng-template #accordionTitle>
@@ -15,8 +16,9 @@
     </div>
 
     <!-- Modal -->
+    <h1 class="font-bold">Modal</h1>
     <button
-      class="w-fit border rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300"
+      class="w-fit border border-gray-600 rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300"
       (click)="openModal()"
     >
       <h1 class="text-xs font-bold">Open Modal</h1>
@@ -31,9 +33,9 @@
     </Modal>
 
     <!-- Drawer -->
-
+    <h1 class="font-bold">Drawer</h1>
     <button
-      class="w-fit border rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300"
+      class="w-fit border border-gray-600 rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300"
       (click)="openDrawer()"
     >
       <h1 class="text-xs font-bold">Open Drawer</h1>
@@ -56,6 +58,7 @@
     </Drawer>
 
     <!-- Card -->
+    <h1 class="font-bold">Card</h1>
     <Card>
       <div card-title>
         <h1 class="font-bold">Title</h1>
@@ -70,8 +73,71 @@
     </Card>
 
     <!-- Data Table -->
+    <h1 class="font-bold">Data Table</h1>
     <div class="w-full overflow-x-auto">
       <Data-Table [headers]="headers" [data]="data"></Data-Table>
     </div>
+
+    <!-- Stepper -->
+    <h1 class="font-bold">Stepper</h1>
+    <Stepper
+      [steps]="steps"
+      [canProceed]="canProceed"
+      [showStepper]="false"
+      [onLastStepNext]="lastStepNextFunction"
+    >
+      <ng-template>
+        <form class="flex flex-col gap-4" [formGroup]="forms[0]">
+          <div>
+            <h1 class="text-2xl font-semibold">
+              Let&apos;s Begin With Giving Your Business A Name
+            </h1>
+          </div>
+          <div class="relative">
+            <input
+              autocomplete="off"
+              id="businessName"
+              name="businessName"
+              type="text"
+              class="peer placeholder-transparent h-10 w-full border-b bg-TF-primary text-TF-text text-sm focus:outline-none focus:borer-rose-600"
+              placeholder="Business Name"
+              formControlName="businessName"
+            />
+            <label
+              for="email"
+              class="absolute left-0 -top-3.5 text-gray-600 text-xs peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+              >Name Your Business</label
+            >
+          </div>
+        </form>
+      </ng-template>
+      <ng-template>
+        <form class="flex flex-col gap-4" [formGroup]="forms[1]">
+          <h1 class="text-2xl font-semibold">Add Partners Your Business</h1>
+          <div class="relative">
+            <input
+              autocomplete="off"
+              id="businessName"
+              name="businessName"
+              type="text"
+              class="peer placeholder-transparent h-10 w-full border-b bg-TF-primary text-TF-text text-sm focus:outline-none focus:borer-rose-600"
+              placeholder="Business Name"
+              formControlName="partners"
+            />
+            <label
+              for="email"
+              class="absolute left-0 -top-3.5 text-gray-600 text-xs peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+              >Name Your Business</label
+            >
+          </div>
+        </form>
+      </ng-template>
+      <ng-template>
+        <form [formGroup]="forms[2]">
+          <h2 class="text-xl font-bold">Step 3 Content</h2>
+          <!-- Add additional form controls for step 3 if needed -->
+        </form>
+      </ng-template>
+    </Stepper>
   </div>
 </DashboardLayout>

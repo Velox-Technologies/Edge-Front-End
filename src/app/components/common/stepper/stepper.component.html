@@ -1,0 +1,42 @@
+<div
+  class="flex justify-center border border-gray-600 rounded-md p-8 w-full min-h-44 max-w-lg"
+>
+  <div class="w-full flex flex-col justify-between">
+    <div *ngIf="showStepper" class="flex justify-between items-center mb-8">
+      <div *ngFor="let step of steps; let i = index" class="flex-1 text-center">
+        <div
+          class="mt-2"
+          [ngClass]="{
+            'text-white font-bold border-b': currentStep == i,
+            'text-gray-600 border-b-2 border-gray-600': currentStep != i
+          }"
+        >
+          {{ step }}
+        </div>
+      </div>
+    </div>
+    <div class="mb-8 h-full">
+      <ng-container *ngIf="templates && templates.length">
+        <ng-template
+          [ngTemplateOutlet]="templates.toArray()[currentStep]"
+        ></ng-template>
+      </ng-container>
+    </div>
+    <div class="flex justify-between">
+      <button
+        class="w-fit border border-gray-600 rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300 disabled:text-gray-600 disabled:hover:bg-TF-primary disabled:cursor-not-allowed"
+        (click)="prevStep()"
+        [disabled]="currentStep === 0"
+      >
+        <h1 class="text-xs font-bold">Previous</h1>
+      </button>
+      <button
+        class="w-fit border border-gray-600 rounded-md px-4 py-2 bg-TF-primary text-TF-text hover:bg-gradient-to-r from-[#08aee145] to-[#4e15ca4b] duration-300 disabled:text-gray-600 disabled:hover:bg-TF-primary disabled:cursor-not-allowed"
+        (click)="nextStep()"
+        [disabled]="!canProceed[currentStep]"
+      >
+        <h1 class="text-xs font-bold">Next</h1>
+      </button>
+    </div>
+  </div>
+</div>

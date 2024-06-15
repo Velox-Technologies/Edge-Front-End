@@ -1,17 +1,19 @@
-<div class="w-full">
-  <button
-    class="w-full flex justify-between items-center text-left pl-2"
-    (click)="toggleAccordion()"
-  >
-    <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
-    <lucide-icon
-      class="transform transition-transform"
-      [ngClass]="{ 'rotate-180': isOpen }"
-      name="chevron-down"
-      [size]="20"
-    ></lucide-icon>
-  </button>
-  <div [@accordionContent]="isOpen ? 'open' : 'closed'" class="mt-2">
-    <ng-content></ng-content>
+<Card>
+  <div card-title class="w-full">
+    <button
+      class="w-full flex justify-between items-center text-left pl-2"
+      (click)="toggleAccordion()"
+    >
+      <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+      <lucide-icon
+        class="transform transition-transform"
+        [ngClass]="{ 'rotate-180': isOpen }"
+        name="chevron-down"
+        [size]="20"
+      ></lucide-icon>
+    </button>
+    <div [@accordionContent]="isOpen ? 'open' : 'closed'" class="mt-2">
+      <ng-content></ng-content>
+    </div>
   </div>
-</div>
+</Card>

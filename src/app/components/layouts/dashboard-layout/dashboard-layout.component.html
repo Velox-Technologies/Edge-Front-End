@@ -66,33 +66,29 @@
         </div>
       </div>
       <div>
-        <Card>
-          <div class="w-full" card-title>
-            <Accordion>
-              <ng-template #accordionTitle>
-                <div class="w-full flex items-center gap-2">
-                  <lucide-icon name="circle-user-round"></lucide-icon>
-                  <h1 class="font-bold">{{ user.displayName }}</h1>
-                </div>
-              </ng-template>
-              <div class="w-full p-2">
-                <div
-                  class="w-full flex items-center gap-2 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
-                >
-                  <lucide-icon size="16" name="settings"></lucide-icon>
-                  <h1>Settings</h1>
-                </div>
-                <div
-                  class="w-full flex items-center gap-2 text-red-500 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
-                  (click)="signOut()"
-                >
-                  <lucide-icon size="16" name="log-out"></lucide-icon>
-                  <h1>Sign Out</h1>
-                </div>
-              </div>
-            </Accordion>
+        <Accordion>
+          <ng-template #accordionTitle>
+            <div class="w-full flex items-center gap-2">
+              <lucide-icon name="circle-user-round"></lucide-icon>
+              <h1 class="font-bold">{{ user.displayName }}</h1>
+            </div>
+          </ng-template>
+          <div class="w-full p-2">
+            <div
+              class="w-full flex items-center gap-2 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+            >
+              <lucide-icon size="16" name="settings"></lucide-icon>
+              <h1>Settings</h1>
+            </div>
+            <div
+              class="w-full flex items-center gap-2 text-red-500 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+              (click)="signOut()"
+            >
+              <lucide-icon size="16" name="log-out"></lucide-icon>
+              <h1>Sign Out</h1>
+            </div>
           </div>
-        </Card>
+        </Accordion>
       </div>
     </div>
   </div>
@@ -188,33 +184,29 @@
               </ul>
             </div>
           </div>
-          <Card class="mb-14">
-            <div class="w-full" card-title>
-              <Accordion>
-                <ng-template #accordionTitle>
-                  <div class="w-full flex items-center gap-2">
-                    <lucide-icon name="circle-user-round"></lucide-icon>
-                    <h1 class="font-bold">{{ user.displayName }}</h1>
-                  </div>
-                </ng-template>
-                <div class="w-full p-2">
-                  <div
-                    class="w-full flex items-center gap-2 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
-                  >
-                    <lucide-icon size="16" name="settings"></lucide-icon>
-                    <h1>Settings</h1>
-                  </div>
-                  <div
-                    class="w-full flex items-center gap-2 text-red-500 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
-                    (click)="signOut()"
-                  >
-                    <lucide-icon size="16" name="log-out"></lucide-icon>
-                    <h1>Sign Out</h1>
-                  </div>
-                </div>
-              </Accordion>
+          <Accordion>
+            <ng-template #accordionTitle>
+              <div class="w-full flex items-center gap-2">
+                <lucide-icon name="circle-user-round"></lucide-icon>
+                <h1 class="font-bold">{{ user.displayName }}</h1>
+              </div>
+            </ng-template>
+            <div class="w-full p-2">
+              <div
+                class="w-full flex items-center gap-2 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+              >
+                <lucide-icon size="16" name="settings"></lucide-icon>
+                <h1>Settings</h1>
+              </div>
+              <div
+                class="w-full flex items-center gap-2 text-red-500 font-medium rounded-md p-2 hover:bg-gray-800 duration-300 cursor-pointer"
+                (click)="signOut()"
+              >
+                <lucide-icon size="16" name="log-out"></lucide-icon>
+                <h1>Sign Out</h1>
+              </div>
             </div>
-          </Card>
+          </Accordion>
         </div>
       </ng-template>
     </Drawer>

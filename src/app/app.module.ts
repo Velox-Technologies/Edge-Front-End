@@ -28,6 +28,7 @@ import { OrdersComponent } from './routes/dashboard/orders/orders.component';
 import { InvestmentsComponent } from './routes/dashboard/investments/investments.component';
 import { ReturnsComponent } from './routes/dashboard/returns/returns.component';
 import { SettingsComponent } from './routes/dashboard/settings/settings.component';
+import { StepperComponent } from './components/common/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SettingsComponent } from './routes/dashboard/settings/settings.componen
     InvestmentsComponent,
     ReturnsComponent,
     SettingsComponent,
+    StepperComponent,
   ],
   imports: [
     BrowserModule,
