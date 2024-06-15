@@ -1,0 +1,115 @@
+<div class="relative">
+  <svg
+    #chartSvg
+    class="block mx-auto"
+    [attr.width]="chartWidth"
+    [attr.height]="chartHeight"
+    [attr.viewBox]="'0 0 ' + chartWidth + ' ' + chartHeight"
+    (mouseleave)="hideTooltip()"
+  >
+    <defs>
+      <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(67, 156, 227, 0.8)" />
+        <stop offset="100%" stop-color="rgba(67, 156, 227, 0)" />
+      </linearGradient>
+    </defs>
+
+    <!-- X-axis -->
+    <line
+      [attr.x1]="margin"
+      [attr.y1]="chartHeight - margin"
+      [attr.x2]="chartWidth - margin"
+      [attr.y2]="chartHeight - margin"
+      stroke="gray"
+    ></line>
+    <!-- X-axis label -->
+    <text
+      [attr.x]="chartWidth / 2"
+      [attr.y]="chartHeight - 25"
+      style="text-anchor: middle; font-weight: bold; fill: gray"
+    >
+      {{ xAxisLabel }}
+    </text>
+
+    <!-- Y-axis -->
+    <line
+      [attr.x1]="margin"
+      [attr.y1]="50"
+      [attr.x2]="margin"
+      [attr.y2]="chartHeight - margin"
+      stroke="gray"
+    ></line>
+    <!-- Y-axis label -->
+    <text
+      [attr.transform]="
+        'rotate(-90 ' + margin / 2 + ' ' + chartHeight / 2 + ')'
+      "
+      [attr.x]="margin / 2"
+      [attr.y]="chartHeight - 135"
+      style="text-anchor: middle; font-weight: bold; fill: gray"
+    >
+      {{ yAxisLabel }}
+    </text>
+
+    <!-- Area Path with Gradient -->
+    <path
+      class="fill-current text-gray-800"
+      [attr.d]="generatePath(data)"
+      [attr.transform]="'translate(' + margin + ',0)'"
+      fill="url(#areaGradient)"
+    ></path>
+
+    <!-- Data Points and Lines with Tooltips -->
+    <ng-container *ngFor="let point of data; let i = index">
+      <g [attr.transform]="'translate(' + margin + ',0)'">
+        <!-- Line connecting data points -->
+        <line
+          *ngIf="i > 0"
+          [attr.x1]="((i - 1) * (chartWidth - 2 * margin)) / (data.length - 1)"
+          [attr.y1]="
+            chartHeight -
+            margin -
+            (data[i - 1].y * (chartHeight - 2 * margin)) / maxDataValue
+          "
+          [attr.x2]="(i * (chartWidth - 2 * margin)) / (data.length - 1)"
+          [attr.y2]="
+            chartHeight -
+            margin -
+            (point.y * (chartHeight - 2 * margin)) / maxDataValue
+          "
+          stroke="gray"
+          stroke-width="2"
+        ></line>
+
+        <!-- Data Point with Tooltip -->
+        <circle
+          [attr.cx]="(i * (chartWidth - 2 * margin)) / (data.length - 1)"
+          [attr.cy]="
+            chartHeight -
+            margin -
+            (point.y * (chartHeight - 2 * margin)) / maxDataValue
+          "
+          r="5"
+          fill="gray"
+          style="cursor: pointer"
+          (mouseenter)="showTooltip($event, point)"
+          (mouseleave)="hideTooltip()"
+        ></circle>
+      </g>
+    </ng-container>
+  </svg>
+
+  <!-- Tooltip -->
+  <div
+    *ngIf="tooltipValue !== null && tooltipLabelX !== null"
+    [style.left.px]="tooltipX"
+    [style.top.px]="tooltipY"
+    class="absolute bg-gray-800 text-white px-2 py-1 rounded-md shadow-md"
+  >
+    <div>
+      <h1 class="font-bold text-sm">
+        {{ tooltipLabelX }} : {{ tooltipValue }}
+      </h1>
+    </div>
+  </div>
+</div>

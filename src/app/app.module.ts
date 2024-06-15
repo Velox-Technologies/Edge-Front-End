@@ -29,6 +29,7 @@ import { InvestmentsComponent } from './routes/dashboard/investments/investments
 import { ReturnsComponent } from './routes/dashboard/returns/returns.component';
 import { SettingsComponent } from './routes/dashboard/settings/settings.component';
 import { StepperComponent } from './components/common/stepper/stepper.component';
+import { AreaComponent } from './components/common/charts/area/area.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { StepperComponent } from './components/common/stepper/stepper.component'
     ReturnsComponent,
     SettingsComponent,
     StepperComponent,
+    AreaComponent,
   ],
   imports: [
     BrowserModule,

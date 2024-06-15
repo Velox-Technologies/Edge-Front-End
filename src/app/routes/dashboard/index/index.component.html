@@ -1,5 +1,14 @@
 <DashboardLayout>
   <div class="w-full min-h-screen flex flex-col gap-5 p-4">
+    <!-- Area Chart -->
+    <div>
+      <AreaChart
+        [data]="chartData"
+        xAxisLabel="Date"
+        yAxisLabel="Amount"
+      ></AreaChart>
+    </div>
+
     <!-- Accordion -->
     <h1 class="font-bold">Accordion</h1>
     <div class="w-full md:w-96">

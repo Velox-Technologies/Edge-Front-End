@@ -19,6 +19,13 @@ export class IndexComponent implements OnInit {
   steps = ['Create', 'Add Partners', 'Go!'];
   forms: FormGroup[] = [];
   canProceed: boolean[] = [false, false, true];
+  chartData = [
+    { x: 'Label 1', y: 1 },
+    { x: 'Label 2', y: 2 },
+    { x: 'Label 3', y: 1 },
+    { x: 'Label 4', y: 25 },
+    // Add more data points as needed
+  ];
 
   constructor(private titleService: Title, private fb: FormBuilder) {
     this.titleService.setTitle('Dashboard');
