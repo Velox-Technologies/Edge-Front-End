@@ -19,7 +19,7 @@ export class IndexComponent implements OnInit {
   steps = ['Create', 'Add Partners', 'Go!'];
   forms: FormGroup[] = [];
   canProceed: boolean[] = [false, false, true];
-  chartData = [
+  areaChartData = [
     { x: 'January', y: 200 },
     { x: 'February', y: 350 },
     { x: 'March', y: 280 },
@@ -32,6 +32,12 @@ export class IndexComponent implements OnInit {
     { x: 'October', y: 370 },
     { x: 'November', y: 280 },
     { x: 'December', y: 350 },
+  ];
+  barChartData = [
+    { label: 'Bar 1', value: 10, height: 0 },
+    { label: 'Bar 2', value: 20, height: 0 },
+    { label: 'Bar 3', value: 15, height: 0 },
+    { label: 'Bar 4', value: 30, height: 0 },
   ];
 
   constructor(private titleService: Title, private fb: FormBuilder) {

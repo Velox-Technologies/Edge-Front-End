@@ -30,6 +30,7 @@ import { ReturnsComponent } from './routes/dashboard/returns/returns.component';
 import { SettingsComponent } from './routes/dashboard/settings/settings.component';
 import { StepperComponent } from './components/common/stepper/stepper.component';
 import { AreaComponent } from './components/common/charts/area/area.component';
+import { BarComponent } from './components/common/charts/bar/bar.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AreaComponent } from './components/common/charts/area/area.component';
     SettingsComponent,
     StepperComponent,
     AreaComponent,
+    BarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,84 @@
+<!-- bar.component.html -->
+
+<div class="relative" (window:resize)="onResize($event)">
+  <svg
+    #chartSvg
+    class="block mx-auto"
+    [attr.width]="chartWidth"
+    [attr.height]="chartHeight + 30"
+    [attr.viewBox]="'0 0 ' + chartWidth + ' ' + chartHeight"
+  >
+    <!-- Y-axis -->
+    <line
+      [attr.x1]="barMargin"
+      [attr.y1]="0"
+      [attr.x2]="barMargin"
+      [attr.y2]="chartHeight - barMargin"
+      stroke="gray"
+    ></line>
+    <!-- Y-axis label -->
+    <text
+      [attr.transform]="
+        'rotate(-90 ' + barMargin / 2 + ' ' + chartHeight / 2 + ')'
+      "
+      [attr.x]="barMargin / 2"
+      [attr.y]="chartHeight / 2"
+      style="text-anchor: middle; font-weight: bold; fill: gray"
+    >
+      {{ yAxisLabel }}
+    </text>
+
+    <!-- X-axis -->
+    <line
+      [attr.x1]="barMargin"
+      [attr.y1]="chartHeight - barMargin"
+      [attr.x2]="chartWidth"
+      [attr.y2]="chartHeight - barMargin"
+      stroke="gray"
+    ></line>
+    <!-- X-axis label -->
+    <text
+      [attr.x]="chartWidth / 2"
+      [attr.y]="chartHeight + 15"
+      style="text-anchor: middle; fill: gray; font-weight: bold"
+    >
+      {{ xAxisLabel }}
+    </text>
+
+    <!-- X-axis labels -->
+    <ng-container *ngFor="let bar of bars; let i = index">
+      <text
+        [attr.x]="barMargin + i * (barWidth + barPadding) + barWidth / 2"
+        [attr.y]="chartHeight - barMargin + 15"
+        style="text-anchor: middle; fill: gray; font-size: 12px"
+      >
+        {{ bar.label }}
+      </text>
+    </ng-container>
+
+    <!-- Bars -->
+    <ng-container *ngFor="let bar of bars; let i = index">
+      <rect
+        [attr.x]="barMargin + i * (barWidth + barPadding)"
+        [attr.y]="chartHeight - bar.height - barMargin"
+        [attr.width]="barWidth"
+        [attr.height]="bar.height"
+        class="fill-current text-gray-800/60"
+        (mouseenter)="showTooltip($event, bar)"
+        (mouseleave)="hideTooltip()"
+      ></rect>
+    </ng-container>
+  </svg>
+
+  <!-- Tooltip -->
+  <div
+    *ngIf="tooltipValue !== null"
+    [style.left.px]="tooltipX"
+    [style.top.px]="tooltipY"
+    class="absolute bg-gray-800 text-white px-2 py-1 rounded-md shadow-md"
+  >
+    <div>
+      <h1 class="font-bold text-sm">{{ tooltipLabel }} : {{ tooltipValue }}</h1>
+    </div>
+  </div>
+</div>

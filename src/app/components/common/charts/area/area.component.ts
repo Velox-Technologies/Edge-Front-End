@@ -76,8 +76,8 @@ export class AreaComponent implements AfterViewInit {
     const svgY = event.clientY - rect.top;
 
     // Adjust tooltip position to be above the data point
-    const tooltipOffsetX = -300; // Offset from the data point
-    const tooltipOffsetY = -120; // Offset above the data point
+    const tooltipOffsetX = -320; // Offset from the data point
+    const tooltipOffsetY = -160; // Offset above the data point
     const cx = parseFloat(circle.getAttribute('cx') || '0');
     const cy = parseFloat(circle.getAttribute('cy') || '0');
 
